@@ -21,7 +21,7 @@ import com.unicom.util.ShowUtil;
  * 对CB文件进行实例过滤
  * 应用场景：在对CB文件进行切割之前调用此类方法
  * 
- * @author linzt
+ * @author linzt kendy
  * @time 2018年3月1日 下午2:40:40
  */
 public class CBFileFilter {
