@@ -18,7 +18,7 @@ import com.unicom.model.CBSSFile;
 import com.unicom.util.ShowUtil;
 
 /**
- * 对CB文件进行实例过滤
+ * 对CB文件进行filter过滤
  * 应用场景：在对CB文件进行切割之前调用此类方法
  * 
  * @author linzt kendy
@@ -36,8 +36,8 @@ public class CBFileFilter {
 //	private static final String CB_RESOURCE_FOLDER_PATH = "C:/Users/linzt8/Desktop/华为/订购关系";
 	private static final String CB_RESOURCE_FOLDER_PATH = "C:/Users/linzt8/Desktop/华为/test";
 	
-	//实例源文件路径（过滤条件记录集）
-	private static final String CB_FILTER_FILE_PATH = "C:/Users/linzt8/Desktop/华为/实例.txt";
+	//filter源文件路径（过滤条件记录集）
+	private static final String CB_FILTER_FILE_PATH = "C:/Users/linzt8/Desktop/华为/filter.txt";
 //	private static final String CB_FILTER_FILE_PATH = "C:/Users/linzt8/Desktop/华为/测试规范.txt";
 	
 	//过滤条件缓存{PHONENUMBER	： VACSPPRODUCTID},大约有7万个元素
@@ -45,7 +45,7 @@ public class CBFileFilter {
 	
 	private  static String currentPath = "";
 	
-	//实例文件的第一行开头
+	//filter文件的第一行开头
 	private static final String FIRST_ROW_CONTENT_START = "PHONENUMBER";
 	
 	//分隔符
@@ -82,12 +82,12 @@ public class CBFileFilter {
 		
 		CBFileFilter CBFilter = new CBFileFilter();
 		//获取过滤条件
-		System.out.println("开始读取实例文件......");
+		System.out.println("start to read filter.txt ......");
 //		List<String> conditions = CBFilter.getFileList(new File(CB_FILTER_FILE_PATH));
-		String path = currentPath + SEPRATOR + "实例.txt";
+		String path = currentPath + SEPRATOR + "filter.txt";
 		List<String> conditions = CBFilter.getFileList(new File(path));
 		if(CollectionUtils.isEmpty(conditions)) {
-			ShowUtil.show("没有找到实例.txt,正确路径 ：" + path);
+			ShowUtil.show("not found filter.txt, the right path is ：" + path);
 			return;
 		}
 		//开始处理，用map结构来存储以提升检索性能，{PHONENUMBER#VACSPPRODUCTID	： null}
@@ -103,16 +103,16 @@ public class CBFileFilter {
 		//额外判断是否遗漏或者重复
 		int conditionSize = conditions.size();
 		int filterMapSize = filterMap.size();
-		String compareResult = conditionSize - filterMapSize == 0 ? "是" : "否";
-		System.out.println(String.format("实例数：%d  缓存数：%d  是否相等：%s", conditionSize, filterMapSize, compareResult));
+		String compareResult = conditionSize - filterMapSize == 0 ? "yes" : "no";
+		System.out.println(String.format("filter numbers ：%d  cache：%d  equals：%s", conditionSize, filterMapSize, compareResult));
 		if(conditionSize != filterMapSize) {
-			ShowUtil.show(String.format("检测到问题,实例数%d,缓存数%d,两者应该相等！",conditionSize, filterMapSize));
+			ShowUtil.show(String.format("error: filter record lines is %d, cache lines is %d, these two number should be equal！",conditionSize, filterMapSize));
 		}
 		//处理CB
 		List<File> cbssFileList = CBFilter.getCBSSFileList();
 		if(CollectionUtils.isEmpty(cbssFileList)) {
 //			ShowUtil.show("找不到CB文件，当前路径：" + CB_RESOURCE_FOLDER_PATH);
-			ShowUtil.show("找不到CB文件，当前路径：" + currentPath);
+			ShowUtil.show("not found CB file, the current path is ：" + currentPath);
 			return;
 		}
 		
@@ -120,7 +120,7 @@ public class CBFileFilter {
 		for (int i = 0; i < cbssFileList.size(); i++) {
 			
 			File cbFile = cbssFileList.get(i);
-			System.out.println(String.format("正在处理第%d个文件，CB名称是：%s", i, cbFile.getName()));
+			System.out.println(String.format("handling the %d file，CB file name is ：%s", i, cbFile.getName()));
 			List<String> cbAllContents = CBFilter.getFileList(cbFile);
 
 			// 缓存CB文件内容
@@ -141,7 +141,7 @@ public class CBFileFilter {
 			
 		}
 		long end = System.currentTimeMillis();
-		print("CB文件过滤及覆盖总耗时："+(end - start) + "毫秒");
+		print("handle filter takes time ："+(end - start) + "ms");
 	}
 	
 	/**
@@ -242,7 +242,7 @@ public class CBFileFilter {
 				String data = getCBSSDataString(cbssFile);
 				FileUtils.write(file, data, Charset.defaultCharset());
 				long end = System.currentTimeMillis();
-				System.out.println("生成cbss文件,耗时："+(end-start));
+				System.out.println(" create CB files , takes time :"+(end-start));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -2,6 +2,7 @@ package com.unicom.test;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.ConsoleHandler;
@@ -23,6 +24,16 @@ public class Test {
 	public static void main(String[] args) {
 
 	}
+	
+	public static void readFileTest(String filePath) throws Exception{
+		File file = new File(filePath);
+		List<String> readLines = FileUtils.readLines(file, Charset.defaultCharset());
+	}
+	
+	
+	
+	
+	
 	public static void testLog() throws IOException { 
 		Logger log = Logger.getLogger("lavasoft"); 
 		log.setLevel(Level.INFO); 

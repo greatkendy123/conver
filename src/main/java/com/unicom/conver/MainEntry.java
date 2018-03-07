@@ -31,7 +31,7 @@ public class MainEntry {
     		VacConvert.handleVAC("");
     		
     	}else if(StringUtils.equals(callType, "cbss")){
-    		CBFileSplit.handleCBSS("");
+    		CBFileSplit2.handleCBSS("");
     		
     	}else if(StringUtils.equals(callType, "filter")){
     		CBFileFilter.handleCBFileFilter("");
