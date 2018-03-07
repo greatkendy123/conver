@@ -21,7 +21,7 @@ import com.unicom.model.CBSSFile;
 import com.unicom.util.ShowUtil;
 
 /**
- * CBSS文件切割，重新生成话单文件
+ * CBSS文件切割，重新生成话单文件（针对原始文件，约1G大小）
  * 
  * 有7个CBSS大文件，每个CBSS文件最高150万条记录
  * 切割的文件个数大约 7 * 1500000 / 10000 = 1050 个CB小文件

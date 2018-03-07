@@ -21,13 +21,13 @@ import com.unicom.model.CBSSFile;
 import com.unicom.util.ShowUtil;
 
 /**
- * CBSS文件切割，重新生成话单文件
+ * CBSS文件切割，重新生成话单文件(重构，针对过滤CB的文件，纸10M)
  * 
  * 有7个CBSS大文件，每个CBSS文件最高150万条记录
  * 切割的文件个数大约 7 * 1500000 / 10000 = 1050 个CB小文件
  * 
  * @author 林泽涛
- * @time 2017年12月23日 下午10:56:39
+ * @time 2018年3月7日 下午03:56:39
  */
 public class CBFileSplit2 {
 
