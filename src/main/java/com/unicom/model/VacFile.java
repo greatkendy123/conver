@@ -7,6 +7,7 @@ public class VacFile {
 	private String fileName;
 	private String firstRow;
 	private List<Vac> dataList;
+	private List<String> dataListString;
 	
 	public VacFile() {
 		super();
@@ -23,7 +24,15 @@ public class VacFile {
 		this.firstRow = firstRow;
 		this.dataList = dataList;
 	}
+	
+	
 
+
+	public VacFile(String fileName, String firstRow) {
+		super();
+		this.fileName = fileName;
+		this.firstRow = firstRow;
+	}
 
 	public String getFileName() {
 		return fileName;
@@ -49,5 +58,14 @@ public class VacFile {
 		this.dataList = dataList;
 	}
 
+	public List<String> getDataListString() {
+		return dataListString;
+	}
+
+	public void setDataListString(List<String> dataListString) {
+		this.dataListString = dataListString;
+	}
+
+	
 	
 }

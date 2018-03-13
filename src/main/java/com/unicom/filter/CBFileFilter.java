@@ -69,7 +69,8 @@ public class CBFileFilter {
 	}
 	
 	public static void main(String... args) throws Exception{
-		handleCBFileFilter("");
+		String outPath = "C:/Users/linzt8/Desktop/华为/test";
+		handleCBFileFilter(outPath);
 	}
 	
 	

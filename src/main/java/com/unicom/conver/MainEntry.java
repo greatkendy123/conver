@@ -3,6 +3,7 @@ package com.unicom.conver;
 import org.apache.commons.lang3.StringUtils;
 
 import com.unicom.filter.CBFileFilter;
+import com.unicom.filter.VacFilter;
 import com.unicom.util.ShowUtil;
 
 /**
@@ -28,13 +29,21 @@ public class MainEntry {
     	}
     	String callType = args[0];
     	if(StringUtils.equals(callType, "vac")) {
-    		VacConvert.handleVAC("");
+    		VacConvert2.handleVAC("");
     		
-    	}else if(StringUtils.equals(callType, "cbss")){
+    	}
+//    	if(StringUtils.equals(callType, "vac")) {
+//    		VacConvert2.handleVAC("");
+//    		
+//    	}
+    	else if(StringUtils.equals(callType, "cbss")){
     		CBFileSplit2.handleCBSS("");
     		
     	}else if(StringUtils.equals(callType, "filter")){
     		CBFileFilter.handleCBFileFilter("");
+    		
+    	}else if(StringUtils.equals(callType, "filterVAC")){
+    		VacFilter.handleVACFileFilter("");
     		
     	}else {
     		ShowUtil.show("参数无效！", -1);
